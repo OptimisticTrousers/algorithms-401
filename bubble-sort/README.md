@@ -7,9 +7,6 @@ Names: Shouhay
 2. Use an external file to output the array on each iterative step for bubble sort
 
 3. Write 3 versions of bubble sort
-
    - Naive implementation
-
    - Implementation to reduce the traversal length over the array each iteration by -1
-
    - Using a flag value that exits the loop once swapping is done
