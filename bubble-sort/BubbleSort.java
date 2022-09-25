@@ -160,14 +160,14 @@ public class BubbleSort {
     }
 
     public static void eachInterval(int[] arr, int j) {
-        try {
-            if (DEBUG_INTERVAL == -1) {
-                return;
-            } else if (j % DEBUG_INTERVAL == 0) {
-                write(debug(arr, j));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (DEBUG_INTERVAL >= 0) {
+            try {
+                if (j % DEBUG_INTERVAL == 0) {
+                    write(debug(arr, j));
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }  
         }
     }
 }
