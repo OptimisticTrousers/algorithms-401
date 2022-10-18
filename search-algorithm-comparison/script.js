@@ -2,7 +2,8 @@
 const mainButton = document.querySelector(".main__button");
 const linearDisplay = document.querySelector(".main__linear");
 const binaryDisplay = document.querySelector(".main__binary");
-const arrayDisplay = document.querySelector(".main__display");
+const arrayDisplay = document.querySelector(".main__array");
+const arrayLength = document.querySelector(".main__length")
 const linearIndexDisplay = document.querySelector(".main__linear-index");
 const binaryIndexDisplay = document.querySelector(".main__binary-index");
 
