@@ -1,3 +1,10 @@
+// DOM queries for elements
+const mainButton = document.querySelector(".main__button");
+const linearDisplay = document.querySelector(".main__linear");
+const binaryDisplay = document.querySelector(".main__binary");
+const arrayDisplay = document.querySelector(".main__display");
+const linearIndexDisplay = document.querySelector(".main__linear-index");
+const binaryIndexDisplay = document.querySelector(".main__binary-index");
 function linearSearch(array, target) {
   return array.findIndex((element) => element === target);
 }
