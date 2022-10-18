@@ -1,11 +1,11 @@
 // DOM queries for elements
 const mainButton = document.querySelector(".main__button");
-const linearDisplay = document.querySelector(".main__linear");
-const binaryDisplay = document.querySelector(".main__binary");
+const linearSpeedDisplay= document.querySelectorAll(".main__speed")[0];
+const binarySpeedDisplay = document.querySelectorAll(".main__speed")[1];
 const arrayDisplay = document.querySelector(".main__array");
 const arrayLength = document.querySelector(".main__length")
-const linearIndexDisplay = document.querySelector(".main__linear-index");
-const binaryIndexDisplay = document.querySelector(".main__binary-index");
+const linearIndexDisplay = document.querySelectorAll(".main__index")[0];
+const binaryIndexDisplay = document.querySelectorAll(".main__index")[1];
 
 // Event listeners
 mainButton.addEventListener("click", (event) => {
@@ -25,8 +25,8 @@ mainButton.addEventListener("click", (event) => {
     5
   );
 
-  linearDisplay.textContent = `Speed display: ${linearTime} ms`;
-  binaryDisplay.textContent = `Binary display: ${binaryTime} ms`;
+  linearSpeedDisplay.textContent = `Speed display: ${linearTime} ms`;
+  binarySpeedDisplay.textContent = `Binary display: ${binaryTime} ms`;
   linearIndexDisplay.textContent = `Linear search found index: ${linearIndex}`;
   binaryIndexDisplay.textContent = `Binary search found index: ${binaryIndex}`;
 });
@@ -54,7 +54,7 @@ function findTime(callback, array, target) {
   const timeStart = performance.now();
   const foundIndex = callback(array, target);
   const timeEnd = performance.now();
-  const timeTaken = timeEnd - timeStart;
+  const timeTaken = (timeEnd - timeStart).toFixed(4);
 
   // Shorter sytanx for if statement
   return { foundIndex, timeTaken };
