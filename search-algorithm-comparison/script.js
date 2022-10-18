@@ -91,6 +91,3 @@ function binarySearch(list, target) {
 
   return -1;
 }
-
-console.log(binarySearch([2, 1, 4, 10, 15, 62, 6, 7, 9], 4));
-console.log(sortArray([2, 1, 4, 10, 15, 62, 6, 7, 9]));
