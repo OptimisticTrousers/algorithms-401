@@ -13,23 +13,9 @@ body {
   flex-direction: column;
 }
 
-footer {
-  margin-top: auto;
-  background-color: blue;
-  height: 8%;
-  padding: 2rem;
-  text-align: center;
-}
-
 .header__title {
   font-size: 4rem;
   text-align: center;
-}
-
-.main__interaction {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .main__output {
@@ -39,6 +25,23 @@ footer {
   font-size: 3rem;
   gap: 64px;
   text-align: center;
+}
+
+.main__container{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main__interaction {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main__array, .main__length {
+    font-size: 3rem;
 }
 
 .main__button {
@@ -62,15 +65,12 @@ footer {
   background-color: #5daefe;
 }
 
-.main__container{
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
-
-.main__array, .main__length {
-    font-size: 3rem;
+footer {
+  margin-top: auto;
+  background-color: blue;
+  height: 8%;
+  padding: 2rem;
+  text-align: center;
 }
 
 @media(max-width: 720px) {
