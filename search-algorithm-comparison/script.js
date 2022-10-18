@@ -1,4 +1,4 @@
-// DOM queries for elements
+// DOM queries for elements. All this is doing is grabbing the HTML elements to do things with them
 const mainButton = document.querySelector(".main__button");
 const linearSpeedDisplay= document.querySelectorAll(".main__speed")[0];
 const binarySpeedDisplay = document.querySelectorAll(".main__speed")[1];
@@ -7,13 +7,13 @@ const arrayLength = document.querySelector(".main__length")
 const linearIndexDisplay = document.querySelectorAll(".main__index")[0];
 const binaryIndexDisplay = document.querySelectorAll(".main__index")[1];
 
-// Event listeners
+// Event listeners for click event on button
 mainButton.addEventListener("click", (event) => {
   // Creating a random array of unique values that is size 1,000,000
   const randomArray = generateArray(1000000);
   displayArray(randomArray)
   // Arbitrarily picking 5 as the target
-  // Don't worry about this part if it's confusing
+  // Don't worry about this part if it's confusing, but it gets the results from the 'findTime' helper function
   const { foundIndex: binaryIndex, timeTaken: binaryTime } = findTime(
     binarySearch,
     randomArray,
@@ -25,6 +25,7 @@ mainButton.addEventListener("click", (event) => {
     5
   );
 
+  // Changing the text content of these 4 HTML elements
   linearSpeedDisplay.textContent = `Speed display: ${linearTime} ms`;
   binarySpeedDisplay.textContent = `Binary display: ${binaryTime} ms`;
   linearIndexDisplay.textContent = `Linear search found index: ${linearIndex}`;
