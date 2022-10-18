@@ -19,9 +19,10 @@ mainButton.addEventListener("click", (event) => {
     randomArray,
     5
   );
+  const sortedRandomArray = sortArray(randomArray)
   const { foundIndex: linearIndex, timeTaken: linearTime } = findTime(
     linearSearch,
-    randomArray,
+    sortedRandomArray,
     5
   );
 
