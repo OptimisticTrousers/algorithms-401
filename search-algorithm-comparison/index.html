@@ -9,13 +9,22 @@
     <script src="script.js" defer></script>
   </head>
   <body>
+    <header>
+      <h1>Optimistic Trousers</h1>
+    </header>
     <main class="main">
+      <div class="main__linear-container">
+        <p class="main__linear">Linear speed:</p>
+        <p class="main__linear-index">Linear search found index:</p>
+      </div>
+      <div class="main__binary-container">
+        <div class="main__binary">Binary speed:</div>
+        <div class="main__binary-index">Binary search found index:</div>
+      </div>
       <div class="main__display">[]</div>
-      <div class="main__linear">Linear speed: </div>
-      <div class="main__binary">Binary speed: </div>
-      <div class="main__linear-index">Linear search found index: </div>
-      <div class="main__binary-index">Binary search found index: </div>
-      <button class="main__button">Click to sort array with linear search and binary search</button>
+      <button class="main__button">
+        Click to sort array with linear search and binary search
+      </button>
     </main>
     <footer class="footer">Made with love</footer>
   </body>
