@@ -53,11 +53,6 @@ function sortArray(array) {
   return [...array].sort((a, b) => a - b);
 }
 
-function sortArray(array) {
-  // ... is known as the 'spread syntax', used to copy an array. Not copying the array when sorting will mutate the original array, which we don't want because it can cause unintended side effects
-  return [...array].sort((a, b) => a - b);
-}
-
 function displayArray(array) {
   // Displays the last four elements of the array on the screen
   arrayDisplay.textContent = `[...${array[array.length - 5]}, ${
