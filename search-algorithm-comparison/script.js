@@ -66,7 +66,7 @@ function binarySearch(list, target) {
   let high = list.length - 1;
 
   while (low <= high) {
-    let mid = low + (high - low) / 2;
+    let mid = (low + high) / 2;
 
     if (list[mid] === target) {
       return mid;
@@ -79,3 +79,5 @@ function binarySearch(list, target) {
 
   return -1;
 }
+
+console.log(binarySearch([2, 1, 4, 10, 15, 62, 6, 7, 9], 4))
