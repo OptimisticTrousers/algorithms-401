@@ -27,7 +27,7 @@ body {
   text-align: center;
 }
 
-.main__container{
+.main__container {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -40,8 +40,9 @@ body {
   align-items: center;
 }
 
-.main__array, .main__length {
-    font-size: 2rem;
+.main__array,
+.main__length {
+  font-size: 2rem;
 }
 
 .main__button {
@@ -72,8 +73,8 @@ footer {
   text-align: center;
 }
 
-@media(max-width: 720px) {
-    .main__output {
-        flex-wrap: wrap;
-    }
+@media (max-width: 720px) {
+  .main__output {
+    flex-wrap: wrap;
+  }
 }
