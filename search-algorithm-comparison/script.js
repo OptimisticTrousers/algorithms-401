@@ -7,8 +7,12 @@ const arrayLength = document.querySelector(".main__length");
 const linearIndexDisplay = document.querySelectorAll(".main__index")[0];
 const binaryIndexDisplay = document.querySelectorAll(".main__index")[1];
 
-// Event listener for click event on button
-mainButton.addEventListener("click", () => {
+
+// Event listener called 'onClick' for click event on button
+mainButton.addEventListener("click", onClick);
+
+// Function that occurs when the button is clicked
+function onClick() {
   // Creating a random array of unique values that is size 1,000,000
   const randomArray = generateArray(1000000);
   // Sorting the array for binary search
@@ -18,28 +22,19 @@ mainButton.addEventListener("click", () => {
   // Don't worry about this part if it's confusing, but just know it gets the results from the 'findTime' helper function
   const { foundIndex: binaryIndex, timeTaken: binaryTime } = findTime(
     binarySearch,
-    randomArray,
+    sortedRandomArray,
     5
   );
   const { foundIndex: linearIndex, timeTaken: linearTime } = findTime(
     linearSearch,
-    sortedRandomArray,
+    randomArray,
     5
   );
-
   // Changing the text content of these 4 HTML elements
   linearSpeedDisplay.textContent = `Speed display: ${linearTime} ms`;
-  binarySpeedDisplay.textContent = `Binary display: ${binaryTime} ms`;
-  linearIndexDisplay.textContent = `Linear search found index: ${linearIndex}`;
-  binaryIndexDisplay.textContent = `Binary search found index: ${binaryIndex}`;
-});
-
-function displayArray(array) {
-  // Displays the last four elements of the array on the screen
-  arrayDisplay.textContent = `[...${array[array.length - 5]}, ${
-    array[array.length - 4]
-  }, ${array[array.length - 3]}, ${array[array.length - 2]}]`;
-  arrayLength.textContent = `Array length is ${array.length}`;
+  binarySpeedDisplay.textContent = `Speed display: ${binaryTime} ms`;
+  linearIndexDisplay.textContent = `Found index: ${linearIndex}`;
+  binaryIndexDisplay.textContent = `Found index: ${binaryIndex}`;
 }
 
 // Generates random array
@@ -54,6 +49,20 @@ function generateArray(length) {
   return Array.from(set);
 }
 
+function sortArray(array) {
+  // ... is known as the 'spread syntax', used to copy an array. Not copying the array when sorting will mutate the original array, which we don't want because it can cause unintended side effects
+  return [...array].sort((a, b) => a - b);
+}
+
+function displayArray(array) {
+  // Displays the last four elements of the array on the screen
+  arrayDisplay.textContent = `[...${array[array.length - 5]}, ${
+    array[array.length - 4]
+  }, ${array[array.length - 3]}, ${array[array.length - 2]}]`;
+  arrayLength.textContent = `Array length is ${array.length}`;
+}
+
+
 // Finds the time of any searching algorithm by passing the function reference as 'callback', the array, and target
 function findTime(callback, array, target) {
   const timeStart = performance.now();
@@ -63,11 +72,6 @@ function findTime(callback, array, target) {
 
   // Returning an object with the foundIndex and timeTaken
   return { foundIndex, timeTaken };
-}
-
-function sortArray(array) {
-  // ... is known as the spread syntax to copy an array. Not copying the array when sorting will mutate the original array, which we don't want because it can cause unintended side effects
-  return [...array].sort((a, b) => a-b);
 }
 
 // Built in JS function to search for index. O(n) time
@@ -92,10 +96,4 @@ function binarySearch(list, target) {
   }
 
   return -1;
-}
-
-console.log(sortArray([2, 1, 4, 10, 15, 62, 6, 7, 9]))
-
-module.exports = {
-  sortArray
 }
