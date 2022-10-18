@@ -36,9 +36,9 @@ mainButton.addEventListener("click", () => {
 
 function displayArray(array) {
   // Displays the last four elements of the array on the screen
-  arrayDisplay.textContent = `[...${array[array.length - 2]}, ${
-    array[array.length - 3]
-  }, ${array[array.length - 4]}, ${array[array.length - 5]}]`;
+  arrayDisplay.textContent = `[...${array[array.length - 5]}, ${
+    array[array.length - 4]
+  }, ${array[array.length - 3]}, ${array[array.length - 2]}]`;
   arrayLength.textContent = `Array length is ${array.length}`;
 }
 
@@ -67,7 +67,7 @@ function findTime(callback, array, target) {
 
 function sortArray(array) {
   // ... is known as the spread syntax to copy an array. Not copying the array when sorting will mutate the original array, which we don't want because it can cause unintended side effects
-  return [...array].sort((a, b) => b - a);
+  return [...array].sort((a, b) => a-b);
 }
 
 // Built in JS function to search for index. O(n) time
@@ -92,4 +92,10 @@ function binarySearch(list, target) {
   }
 
   return -1;
+}
+
+console.log(sortArray([2, 1, 4, 10, 15, 62, 6, 7, 9]))
+
+module.exports = {
+  sortArray
 }
