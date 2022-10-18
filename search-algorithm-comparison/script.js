@@ -5,6 +5,30 @@ const binaryDisplay = document.querySelector(".main__binary");
 const arrayDisplay = document.querySelector(".main__display");
 const linearIndexDisplay = document.querySelector(".main__linear-index");
 const binaryIndexDisplay = document.querySelector(".main__binary-index");
+
+// Event listeners
+mainButton.addEventListener("click", (event) => {
+  // Creating a random array of unique values that is size 1,000,000
+  const randomArray = generateArray(1000000);
+  // Arbitrarily picking 5 as the target
+  // Don't worry about this part if it's confusing
+  const { foundIndex: binaryIndex, timeTaken: binaryTime } = findTime(
+    binarySearch,
+    randomArray,
+    5
+  );
+  const { foundIndex: linearIndex, timeTaken: linearTime } = findTime(
+    linearSearch,
+    randomArray,
+    5
+  );
+
+  linearDisplay.textContent = `Speed display: ${linearTime} ms`;
+  binaryDisplay.textContent = `Binary display: ${binaryTime} ms`;
+  linearIndexDisplay.textContent = `Linear search found index: ${linearIndex}`;
+  binaryIndexDisplay.textContent = `Binary search found index: ${binaryIndex}`;
+});
+
 function displayArray(array) {
   // Displays the array on screen for now
   arrayDisplay.textContent = array;
