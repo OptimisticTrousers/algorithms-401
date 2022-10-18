@@ -7,19 +7,20 @@ const arrayLength = document.querySelector(".main__length");
 const linearIndexDisplay = document.querySelectorAll(".main__index")[0];
 const binaryIndexDisplay = document.querySelectorAll(".main__index")[1];
 
-// Event listeners for click event on button
-mainButton.addEventListener("click", (event) => {
+// Event listener for click event on button
+mainButton.addEventListener("click", () => {
   // Creating a random array of unique values that is size 1,000,000
   const randomArray = generateArray(1000000);
+  // Sorting the array for binary search
+  const sortedRandomArray = sortArray(randomArray);
   displayArray(randomArray);
   // Arbitrarily picking 5 as the target
-  // Don't worry about this part if it's confusing, but it gets the results from the 'findTime' helper function
+  // Don't worry about this part if it's confusing, but just know it gets the results from the 'findTime' helper function
   const { foundIndex: binaryIndex, timeTaken: binaryTime } = findTime(
     binarySearch,
     randomArray,
     5
   );
-  const sortedRandomArray = sortArray(randomArray)
   const { foundIndex: linearIndex, timeTaken: linearTime } = findTime(
     linearSearch,
     sortedRandomArray,
@@ -34,7 +35,7 @@ mainButton.addEventListener("click", (event) => {
 });
 
 function displayArray(array) {
-  // Displays the array on screen for now
+  // Displays the last four elements of the array on the screen
   arrayDisplay.textContent = `[...${array[array.length - 2]}, ${
     array[array.length - 3]
   }, ${array[array.length - 4]}, ${array[array.length - 5]}]`;
@@ -66,9 +67,10 @@ function findTime(callback, array, target) {
 
 function sortArray(array) {
   // ... is known as the spread syntax to copy an array. Not copying the array when sorting will mutate the original array, which we don't want because it can cause unintended side effects
-  return [...array].sort((a, b) => a - b);
+  return [...array].sort((a, b) => b - a);
 }
 
+// Built in JS function to search for index. O(n) time
 function linearSearch(array, target) {
   return array.findIndex((element) => element === target);
 }
