@@ -11,6 +11,7 @@ const binaryIndexDisplay = document.querySelector(".main__binary-index");
 mainButton.addEventListener("click", (event) => {
   // Creating a random array of unique values that is size 1,000,000
   const randomArray = generateArray(1000000);
+  displayArray(randomArray)
   // Arbitrarily picking 5 as the target
   // Don't worry about this part if it's confusing
   const { foundIndex: binaryIndex, timeTaken: binaryTime } = findTime(
@@ -32,7 +33,8 @@ mainButton.addEventListener("click", (event) => {
 
 function displayArray(array) {
   // Displays the array on screen for now
-  arrayDisplay.textContent = array;
+  arrayDisplay.textContent = `[...${array[array.length -2]}, ${array[array.length -3]}, ${array[array.length - 4]}, ${array[array.length - 5]}]`;
+  arrayLength.textContent = `Array length is ${array.length}`
 }
 
 // Generates random array
