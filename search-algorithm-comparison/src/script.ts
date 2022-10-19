@@ -8,7 +8,7 @@ const linearIndexDisplay = document.querySelectorAll(".main__index")[0];
 const binaryIndexDisplay = document.querySelectorAll(".main__index")[1];
 
 // Event listener called 'onClick' for click event on button
-mainButton.addEventListener("click", onClick);
+mainButton!.addEventListener("click", onClick);
 
 // Function that occurs when the button is clicked
 function onClick() {
@@ -37,7 +37,7 @@ function onClick() {
 }
 
 // Generates random array
-function generateArray(length) {
+function generateArray(length: number) {
   // Using a set to generate unique, random values for an array
   const arr = new Array(length);
   for(let i = 0; i < length; i++){
@@ -48,21 +48,22 @@ function generateArray(length) {
 }
 
 
-function sortArray(array) {
+function sortArray(array: number[]) {
   // ... is known as the 'spread syntax', used to copy an array. Not copying the array when sorting will mutate the original array, which we don't want because it can cause unintended side effects
   return [...array].sort((a, b) => a - b);
 }
 
-function displayArray(array) {
+function displayArray(array: number[]) {
   // Displays the last four elements of the array on the screen
-  arrayDisplay.textContent = `[...${array[array.length - 5]}, ${
+  arrayDisplay!.textContent = `[...${array[array.length - 5]}, ${
     array[array.length - 4]
   }, ${array[array.length - 3]}, ${array[array.length - 2]}]`;
-  arrayLength.textContent = `Array length is ${array.length}`;
+  arrayLength!.textContent = `Array length is ${array.length}`;
 }
 
 // Finds the time of any searching algorithm by passing the function reference as 'callback', the array, and target
-function findTime(callback, array, target) {
+
+function findTime(callback: (array: number[], target: number) => number, array: number[], target: number) {
   const timeStart = performance.now();
   const foundIndex = callback(array, target);
   const timeEnd = performance.now();
@@ -73,20 +74,20 @@ function findTime(callback, array, target) {
 }
 
 // Built in JS function to search for index. O(n) time
-function linearSearch(array, target) {
+function linearSearch(array: number[], target: number) {
   return array.findIndex((element) => element === target);
 }
 
-function binarySearch(list, target) {
+function binarySearch(array: number[], target: number) {
   let low = 0;
-  let high = list.length - 1;
+  let high = array.length - 1;
 
   while (low <= high) {
     let mid = low + Math.floor((high - low) / 2)
 
-    if (list[mid] === target) {
+    if (array[mid] === target) {
       return mid;
-    } else if (list[mid] > target) {
+    } else if (array[mid] > target) {
       high = mid - 1;
     } else {
       low = mid + 1;
