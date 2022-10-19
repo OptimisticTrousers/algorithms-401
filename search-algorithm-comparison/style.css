@@ -18,6 +18,26 @@ body {
   text-align: center;
 }
 
+.main__label {
+  font-size: 0.94rem;
+  padding: 10px;
+  border-radius: 8px;
+  pointer-events: none;
+  background-color: #10121b;
+  margin-bottom: 10px;
+}
+
+.main__input {
+  font-size: 1rem;
+  height: 50px;
+  padding: 0 15px;
+  vertical-align: middle;
+  border: 1px solid #2e344e;
+  background: transparent;
+  color: white;
+  border-radius: 8px;
+}
+
 .main__output {
   display: flex;
   justify-content: center;
@@ -38,11 +58,22 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 30px;
 }
 
 .main__array,
 .main__length {
   font-size: 2rem;
+  margin: 1rem;
+}
+
+.main__speed {
+  margin: 2rem;
+}
+
+.main__found {
+  font-size: 3rem;
+  text-align: center;
 }
 
 .main__button {
@@ -71,6 +102,10 @@ footer {
   height: 8%;
   padding: 2rem;
   text-align: center;
+}
+
+h2, h3 {
+  margin: 0;
 }
 
 @media (max-width: 720px) {

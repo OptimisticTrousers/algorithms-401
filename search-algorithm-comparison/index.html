@@ -17,17 +17,20 @@
         <div class="main__container">
           <h2>Linear Search</h2>
           <p class="main__speed">Speed:</p>
-          <p class="main__index">Found index:</p>
         </div>
         <div class="main__container">
           <h2>Binary Search</h2>
           <p class="main__speed">Speed:</p>
-          <p class="main__index">Found index:</p>
         </div>
       </div>
+      <h3 class="main__found">Found element:</h3>
       <div class="main__container">
         <p class="main__array">[]</p>
         <p class="main__length">Array length:</p>
+          <label class="main__label"
+            >Enter array length: maximum is 900,000, minimum is 1,000</label
+          >
+          <input class="main__input" value="900000" type="number" min="1000" max="900000"/>
       </div>
       <section class="main__interaction">
         <button class="main__button">
@@ -36,6 +39,7 @@
       </section>
     </main>
     <footer>
+      <p>NOTE: The program generates a random array that is the size of the user-defined value. The program outputs the speed of linear search and binary search on the same array. The target of the array is randomly found each time the user clicks on the button.</p>
       Made with love by Tony Isern, Topu Saha, Connor Harsch, Eliza Clamor, and
       Shouhaybou Mbow
     </footer>
