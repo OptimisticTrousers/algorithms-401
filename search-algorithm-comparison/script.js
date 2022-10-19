@@ -40,13 +40,12 @@ function onClick() {
 function generateArray(length) {
   // Using a set to generate unique, random values for an array
   const arr = new Array(length);
-  for(let i = 0; i < length; i++){
+  for (let i = 0; i < length; i++) {
     arr[i] = Math.floor(Math.random() * 100000) + 1;
   }
   // Using Array.from converts this set into an array
   return arr;
 }
-
 
 function sortArray(array) {
   // ... is known as the 'spread syntax', used to copy an array. Not copying the array when sorting will mutate the original array, which we don't want because it can cause unintended side effects
@@ -82,7 +81,7 @@ function binarySearch(list, target) {
   let high = list.length - 1;
 
   while (low <= high) {
-    let mid = low + Math.floor((high - low) / 2)
+    let mid = low + Math.floor((high - low) / 2);
 
     if (list[mid] === target) {
       return mid;
@@ -95,3 +94,8 @@ function binarySearch(list, target) {
 
   return -1;
 }
+
+const randomArray = generateArray(1000000);
+// Sorting the array for binary search
+const sortedRandomArray = sortArray(randomArray);
+displayArray(randomArray);

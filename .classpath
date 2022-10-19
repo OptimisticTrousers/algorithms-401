@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry excluding="bubble-sort/|polish-peasant/|matrix-multiplication/" kind="src" path=""/>
+	<classpathentry kind="src" path="bubble-sort"/>
+	<classpathentry kind="src" path="matrix-multiplication"/>
+	<classpathentry kind="src" path="polish-peasant"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
