@@ -44,7 +44,7 @@ function onClick() {
   // Changing the text content of these 4 HTML elements
   linearSpeedDisplay.textContent = `Speed: ${linearSearchTime} ms`;
   binarySpeedDisplay.textContent = `Speed: ${binarySearchTime} ms ${
-    binarySearchTime === 0 && "(Instantaneous)"
+    binarySearchTime === 0 && "(Instantaneous)" : ""
   }`;
   foundElementDisplay.textContent = `Found element: ${sortedRandomArray[randomIndex]}`;
 }
