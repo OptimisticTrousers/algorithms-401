@@ -15,8 +15,13 @@ mainButton.addEventListener("click", onClick);
 // Function that occurs when the button is clicked
 function onClick() {
   // Creating a random array of unique values that is size 1,000,000 or the user generated value
+  const inputValue = parseInt(arrayLengthInput.value);
 
-  const randomArray = generateArray(parseInt(arrayLengthInput.value));
+  if (inputValue > 1000000) {
+    arrayLengthInput.value = 1000000;
+    return;
+  }
+  const randomArray = generateArray(inputValue);
   // Sorting the array for binary search
   const sortedRandomArray = sortArray(randomArray);
 
@@ -38,7 +43,9 @@ function onClick() {
   );
   // Changing the text content of these 4 HTML elements
   linearSpeedDisplay.textContent = `Speed: ${linearSearchTime} ms`;
-  binarySpeedDisplay.textContent = `Speed: ${binarySearchTime} ms`;
+  binarySpeedDisplay.textContent = `Speed: ${binarySearchTime} ms ${
+    binarySearchTime === 0 && "(Instantaneous)"
+  }`;
   foundElementDisplay.textContent = `Found element: ${sortedRandomArray[randomIndex]}`;
 }
 
@@ -72,7 +79,7 @@ function findTime(callback, array, target) {
   const timeStart = performance.now();
   callback(array, target);
   const timeEnd = performance.now();
-  const timeTaken = timeEnd - timeStart;
+  const timeTaken = parseFloat(timeEnd - timeStart);
 
   // Returning timeTaken
   return timeTaken;
@@ -102,7 +109,7 @@ function binarySearch(list, target) {
   return -1;
 }
 
-const randomArray = generateArray(1000000);
+const randomArray = generateArray(900000);
 // Sorting the array for binary search
 const sortedRandomArray = sortArray(randomArray);
 displayArray(randomArray);
