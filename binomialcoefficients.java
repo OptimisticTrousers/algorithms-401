@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 public class binomialcoefficients {
-
+    //redundant java code DO NOT SUBMIT
     public static void getBinomialCoefficients(int nth) {
 
         int[] arr = new int[nth + 1];
@@ -15,7 +15,7 @@ public class binomialcoefficients {
             if (i == 0 || i == 1) {
                 arr[i] = 1;
                 arrFormated[i] = 1;
-
+                //DO NOT SUBMIT
             } else if (i >= 2 && i % 2 == 0) { // if i is even, number of elements is odd, unique element at center of array
                 for (int j = 1; j < i / 2 + 1; j++) {
                     index++;
@@ -25,7 +25,7 @@ public class binomialcoefficients {
                     index++;
                     _arr[index] = _arr[j];
                 }
-
+                //DO NOT SUBMIT
                 arrEquals(arr, _arr);
                 arrEquals(arrFormated, arr);
 
@@ -38,11 +38,11 @@ public class binomialcoefficients {
                     index++;
                     _arr[index] = _arr[j];
                 }
-
+                //DO NOT SUBMIT
                 arrEquals(arr, _arr);
                 arrEquals(arrFormated, arr);
             }
-
+            //DO NOT SUBMIT
             System.out.println(Arrays.toString(arrFormated));
         }
     }
