@@ -1,3 +1,4 @@
+package binomial_coefficients;
 import java.util.Arrays;
 
 public class binomialcoefficients {
