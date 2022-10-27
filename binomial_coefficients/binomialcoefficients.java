@@ -1,69 +1,73 @@
 package binomial_coefficients;
-import java.util.Arrays;
 
-public class binomialcoefficients {
-    //redundant java code DO NOT SUBMIT
-    public static void getBinomialCoefficients(int nth) {
+public class BinomialCoefficients {
+    /*
+     * Desc
+     *      computes the factorial value of the given integer
+     * 
+     * Params
+     *      n : given integer 
+     * 
+     * Returns 
+     *      factorial_value : the factorial value of n 
+     */
+    private static int factorial(int n) {
+        if (n <= 0) 
+            return -1; 
 
-        int[] arr = new int[nth + 1];
-        int[] _arr = new int[nth + 1];
+        int factorial_value = 1; 
 
-        for (int i = 0; i < _arr.length; i++) {
-            int[] arrFormated = new int[i + 1];
-            int index = 0;
-            _arr[0] = 1;
-            arrFormated[0] = _arr[0];
-            if (i == 0 || i == 1) {
-                arr[i] = 1;
-                arrFormated[i] = 1;
-                //DO NOT SUBMIT
-            } else if (i >= 2 && i % 2 == 0) { // if i is even, number of elements is odd, unique element at center of array
-                for (int j = 1; j < i / 2 + 1; j++) {
-                    index++;
-                    _arr[index] = arr[j] + arr[j - 1];
-                }
-                for (int j = i / 2 - 1; j > -1; j--) {
-                    index++;
-                    _arr[index] = _arr[j];
-                }
-                //DO NOT SUBMIT
-                arrEquals(arr, _arr);
-                arrEquals(arrFormated, arr);
+        for (int i = n; i > 0; i--) {
+            factorial_value *= i; 
+        }
 
-            } else { // if i is odd, number of elements is even and is a perfect reflection
-                for (int j = 1; j < i / 2 + 1; j++) {
-                    index++;
-                    _arr[index] = arr[j] + arr[j - 1];
-                }
-                for (int j = i / 2; j > -1; j--) {
-                    index++;
-                    _arr[index] = _arr[j];
-                }
-                //DO NOT SUBMIT
-                arrEquals(arr, _arr);
-                arrEquals(arrFormated, arr);
+        return factorial_value;
+    }
+
+    /*
+     * Desc
+     *      Computes the combinatorial value of n and k 
+     * 
+     * Params 
+     *      n : total number 
+     *      k : how many you want to choose
+     * 
+     * Returns 
+     *      returns the combinatorial value of n and k
+     */
+    private static int combinatorial_calc(int n, int k) {
+        // Since binomial coefficents starts and ends with ones, we actively look for those cases to return one
+        if (n == 0 || k == 0) 
+            return 1; 
+        
+        else if (n == k) 
+            return 1; 
+        
+        else 
+            return factorial(n) / (factorial(k) * factorial(n-k)); 
+    }
+
+    /*
+     * Desc
+     *      computes the binomial coefficients for the given number
+     * 
+     * Params
+     *      num : the given number of coefficents
+     * 
+     * Returns 
+     *      returns the last row of the 2D-array since that will have the binomial coefficents for the given number 
+     */
+    public static int[] binomial_coefficients(int num) {
+
+        int[][] arr = new int[num][num]; 
+
+        for (int row = 0; row < num; row++) {
+            for (int col = 0; col < num; col++) {
+                arr[row][col] = combinatorial_calc(row, col); 
             }
-            //DO NOT SUBMIT
-            System.out.println(Arrays.toString(arrFormated));
         }
-    }
 
-    public static void arrEquals(int[] arr1, int[] arr2) {
-        for (int i = 0; i < arr1.length; i++) {
-            arr1[i] = arr2[i];
-        }
-    }
-
-    public static void main(String[] args) {
-        getBinomialCoefficients(8);
-    }
-
+        
+        return arr[num-1]; 
+    }   
 }
-
-/*
- * 1
- * 1 1
- * 1 2 1
- * 1 3 3 1
- * 1 4 6 4 1
- */

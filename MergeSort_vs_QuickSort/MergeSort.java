@@ -5,14 +5,15 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class QuickSort {
+class MergeSort {
 
-    static File f = new File("QuickSort_output.txt");
+    static File f = new File("MergeSort_output.txt");
 
     //Timer variables
     static long start;
     static long end;
 
+    // Driver method
     public static void main(String args[]) {
         clearOutputFile();
 
@@ -66,66 +67,69 @@ public class QuickSort {
         write(s);
     }
 
-    /*
-     * Desc
-     *      Selects the largest element as the pivot and puts all the elements greater than it to the right and smaller than it to the left
-     * 
-     * Params
-     *      arr : array to be sorted
-     *      low : lowest index for the algorithm to start 
-     *      high : highest index for the algorithm to stop 
-     * 
-     * Returns 
-     *      returns i which is the index of the pivot in its sorted location
-     */
-    public static int partition(int arr[], int low, int high) {
-        int pivot_index = high;
-        int i = low-1; 
-        for (int j = low; j < high; j++)
-        {  
-            if (arr[j] <= arr[pivot_index])
-            {
-                i++;
- 
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
-            }
+    // Main function that sorts arr[l..r] using merge()
+    static void sort(int arr[], int l, int r) {
+        if (l < r) {
+            // Find the middle point
+            int m = (l + r) / 2;
+
+            // Sort first and second halves
+            sort(arr, l, m);
+            sort(arr, m + 1, r);
+
+            // Merge the sorted halves
+            merge(arr, l, m, r);
         }
- 
-        int temp = arr[i+1];
-        arr[i+1] = arr[high];
-        arr[high] = temp;
- 
-        return i+1;
     }
 
-    /*
-     * Desc
-     *      sorts the array recrusively by calling sort on sub-portions on the array
-     * 
-     * Params
-     *      arr : array to be sorted
-     *      low : lowest index for the algorithm to start 
-     *      high : highest index for the algorithm to stop 
-     * 
-     * Returns 
-     *      None
-     */
-    public static void sort(int arr[], int low, int high) {
-        
-        if (low < 0 || high >= arr.length) {
-            System.out.print("Invalid Parameters");
-            return;
-        }
-        
+    // Merges two subarrays of arr[].
+    // First subarray is arr[l..m]
+    // Second subarray is arr[m+1..r]
+    static void merge(int arr[], int l, int m, int r) {
+        // Find sizes of two subarrays to be merged
+        int n1 = m - l + 1;
+        int n2 = r - m;
 
-        if (low < high)
-        {
-            int index = partition(arr, low, high);
- 
-            sort(arr, low, index-1);
-            sort(arr, index+1, high);
+        /* Create temp arrays */
+        int L[] = new int[n1];
+        int R[] = new int[n2];
+
+        /* Copy data to temp arrays */
+        for (int i = 0; i < n1; ++i)
+            L[i] = arr[l + i];
+        for (int j = 0; j < n2; ++j)
+            R[j] = arr[m + 1 + j];
+
+        /* Merge the temp arrays */
+
+        // Initial indexes of first and second subarrays
+        int i = 0, j = 0;
+
+        // Initial index of merged subarray array
+        int k = l;
+        while (i < n1 && j < n2) {
+            if (L[i] <= R[j]) {
+                arr[k] = L[i];
+                i++;
+            } else {
+                arr[k] = R[j];
+                j++;
+            }
+            k++;
+        }
+
+        /* Copy remaining elements of L[] if any */
+        while (i < n1) {
+            arr[k] = L[i];
+            i++;
+            k++;
+        }
+
+        /* Copy remaining elements of R[] if any */
+        while (j < n2) {
+            arr[k] = R[j];
+            j++;
+            k++;
         }
     }
 }
