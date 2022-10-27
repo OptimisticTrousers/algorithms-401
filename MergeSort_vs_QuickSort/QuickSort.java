@@ -1,43 +1,30 @@
 package MergeSort_vs_QuickSort;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import print_log.PrintLog;
 
 public class QuickSort {
 
-    static File f = new File("QuickSort_output.txt");
+    static PrintLog pl = new PrintLog("MergeSort_vs_Quicksort/QuickSort");
 
     //Timer variables
     static long start;
     static long end;
 
     public static void main(String args[]) {
-        clearOutputFile();
-
         int arr[] = genRandomIntArray(6); // genRandomIntArray(6) = {12, 11, 13, 5, 6, 7};
 
-        write("Given Array\n");
+        pl.write("Given Array\n");
         printArray(arr);
 
         start = System.currentTimeMillis();
         sort(arr, 0, arr.length - 1);
         end = System.currentTimeMillis();
 
-        write("\n\nSorted array\n");
+        pl.write("\n\nSorted array\n");
         printArray(arr);
-        write("\nTotal time: " + (end - start) + "ms");
+        pl.write("\nTotal time: " + (end - start) + "ms");
     }
 
-    static void clearOutputFile() {
-        if (f.exists()) { // If file already exists, clear contents of .txt file
-            try (BufferedWriter bw = new BufferedWriter(new FileWriter(f, false))) {
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 
     static int[] genRandomIntArray(int nth) {
         int[] arr = new int[nth];
@@ -47,23 +34,13 @@ public class QuickSort {
         return arr;
     }
 
-    //writes to the output file
-    static void write(String s) {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(f, true))) {
-            System.out.print(s);
-            bw.write(s);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     /* A utility function to print array of size n */
     static void printArray(int arr[]) {
         int n = arr.length;
         String s = "";
         for (int i = 0; i < n; ++i)
             s += arr[i] + " ";
-        write(s);
+        pl.write(s);
     }
 
     /*
