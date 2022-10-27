@@ -1,14 +1,12 @@
 package MergeSort_vs_QuickSort;
 
 import print_log.PrintLog;
+import stop_watch.Stopwatch;
 
 public class QuickSort {
 
     static PrintLog pl = new PrintLog("MergeSort_vs_Quicksort/QuickSort");
-
-    //Timer variables
-    static long start;
-    static long end;
+    static Stopwatch sw = new Stopwatch();
 
     public static void main(String args[]) {
         int arr[] = genRandomIntArray(6); // genRandomIntArray(6) = {12, 11, 13, 5, 6, 7};
@@ -16,13 +14,13 @@ public class QuickSort {
         pl.write("Given Array\n");
         printArray(arr);
 
-        start = System.currentTimeMillis();
+        sw.start();
         sort(arr, 0, arr.length - 1);
-        end = System.currentTimeMillis();
+        sw.stop();
 
         pl.write("\n\nSorted array\n");
         printArray(arr);
-        pl.write("\nTotal time: " + (end - start) + "ms");
+        pl.write("\nTotal time: " + sw.getTime() + "ms");
     }
 
 
