@@ -1,5 +1,3 @@
-package binomial_coefficients;
-
 public class BinomialCoefficients {
     /*
      * Desc

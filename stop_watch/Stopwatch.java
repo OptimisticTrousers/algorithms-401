@@ -1,21 +1,34 @@
 package stop_watch;
 
 public class Stopwatch {
-    
+
+    private boolean isCounting = false;
     private long start;
     private long stop;
 
     public long start() {
-        start = System.currentTimeMillis();
-        return start;
+        if (!isCounting) {
+            start = System.currentTimeMillis();
+            isCounting = true;
+            return start;
+        }
+        return -1;
     }
 
     public long stop() {
-        stop = System.currentTimeMillis();
-        return stop;
+        if (isCounting) {
+            stop = System.currentTimeMillis();
+            isCounting = false;
+            return stop;
+        }
+        return -1;
     }
 
     public long getTime() {
-        return stop - start;
+        if(isCounting){
+            long current = System.currentTimeMillis();
+            return current - start;
+        }else
+            return stop - start;
     }
 }
