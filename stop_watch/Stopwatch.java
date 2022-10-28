@@ -1,14 +1,9 @@
 package stop_watch;
 
 public class Stopwatch {
-
     
     private long start;
     private long stop;
-
-    public Stopwatch(){
-
-    }
 
     public long start() {
         start = System.currentTimeMillis();
