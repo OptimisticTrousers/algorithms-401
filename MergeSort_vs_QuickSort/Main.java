@@ -43,13 +43,23 @@ public class Main {
     static void printArray(int arr[]) {
         int n = arr.length;
         String s = "";
+
         if(n <= 10) {
+
             for (int i = 0; i < n; ++i)
                 s += arr[i] + " ";
             pl.writeln(s);
         } else {
-            for (int i = 0; i < 10; ++i)
-                s += arr[i] + " ";
+
+            for (int i = 0; i < 10; ++i) {
+
+                if(i == 9) {
+                    s += arr[i] + "..."; 
+                } else {
+
+                    s += arr[i] + " ";
+                }
+            }
             pl.writeln(s);
         }
     }
