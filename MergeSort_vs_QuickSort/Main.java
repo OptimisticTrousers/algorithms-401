@@ -49,13 +49,15 @@ public class Main {
                 s += arr[i] + " ";
             pl.writeln(s);
         } else {
-
-            for (int i = 0; i < 10; ++i) {
-                if(i == 9) {
-                    s += arr[i] + "test"; 
+            for (int i = 0; i < 5; ++i) {
+                if(i == 4) {
+                    s += arr[i] + ", ..."; 
                 } else {
-                    s += arr[i] + " ";
+                    s += arr[i] + ", ";
                 }
+            }
+            for (int i = n-5; i < n; ++i) {
+                s += ", " + arr[i];
             }
             pl.writeln(s);
         }

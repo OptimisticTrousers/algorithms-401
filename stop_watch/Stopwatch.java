@@ -2,33 +2,33 @@ package stop_watch;
 
 public class Stopwatch {
 
-    private boolean isCounting = false;
-    private float start;
-    private float stop;
+    private boolean isCounting = false; //preserves the on/off state of the abstract Stopwatch
+    private long start;
+    private long stop;
 
-    public float start() {
+    public long start() {
         if (!isCounting) {
-            start = System.currentTimeMillis();
+            start = System.nanoTime();
             isCounting = true;
-            return start;
+            return 0;
         }
-        return -1;
+        return -1; //error code only returns if you haven't invoked stop() prior
     }
 
     public float stop() {
         if (isCounting) {
-            stop = System.currentTimeMillis();
+            stop = System.nanoTime();
             isCounting = false;
-            return stop;
+            return getTime();
         }
-        return -1;
+        return -1; //error code only returns if you haven't invoked start() prior
     }
 
     public float getTime() {
-        if(isCounting){
-            float current = System.currentTimeMillis();
-            return current - start;
+        if(isCounting){ //check current time complexity without stopping
+            long current = System.nanoTime();
+            return (current - start)  / 1000000F;
         }else
-            return stop - start;
+            return (stop - start) / 1000000F;
     }
 }
