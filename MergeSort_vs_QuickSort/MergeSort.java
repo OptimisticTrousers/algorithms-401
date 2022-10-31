@@ -1,48 +1,8 @@
 package MergeSort_vs_QuickSort;
 
-import print_log.PrintLog;
-import stop_watch.Stopwatch;
-
 class MergeSort {
-
-    static PrintLog pl = new PrintLog("MergeSort_vs_Quicksort/MergeSort");
-    static Stopwatch sw = new Stopwatch();
-
-    // Driver method
-    public static void main(String args[]) {
-        int arr[] = genRandomIntArray(6); // genRandomIntArray(6) = {12, 11, 13, 5, 6, 7};
-
-        pl.write("Given Array\n");
-        printArray(arr);
-
-        sw.start();
-        sort(arr, 0, arr.length - 1);
-        sw.stop();
-
-        pl.write("\n\nSorted array\n");
-        printArray(arr);
-        pl.write("\nTotal time: " + sw.getTime() + "ms");
-    }
-
-    static int[] genRandomIntArray(int nth) {
-        int[] arr = new int[nth];
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = (int) (Math.random() * 15 + 1);
-        }
-        return arr;
-    }
-
-    /* A utility function to print array of size n */
-    static void printArray(int arr[]) {
-        int n = arr.length;
-        String s = "";
-        for (int i = 0; i < n; ++i)
-            s += arr[i] + " ";
-        pl.write(s);
-    }
-
     // Main function that sorts arr[l..r] using merge()
-    static void sort(int arr[], int l, int r) {
+    public static void sort(int arr[], int l, int r) {
         if (l < r) {
             // Find the middle point
             int m = (l + r) / 2;
@@ -59,7 +19,7 @@ class MergeSort {
     // Merges two subarrays of arr[].
     // First subarray is arr[l..m]
     // Second subarray is arr[m+1..r]
-    static void merge(int arr[], int l, int m, int r) {
+    private static void merge(int arr[], int l, int m, int r) {
         // Find sizes of two subarrays to be merged
         int n1 = m - l + 1;
         int n2 = r - m;

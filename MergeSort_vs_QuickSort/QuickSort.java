@@ -1,45 +1,6 @@
 package MergeSort_vs_QuickSort;
 
-import print_log.PrintLog;
-import stop_watch.Stopwatch;
-
 public class QuickSort {
-
-    static PrintLog pl = new PrintLog("MergeSort_vs_Quicksort/QuickSort");
-    static Stopwatch sw = new Stopwatch();
-
-    public static void main(String args[]) {
-        int arr[] = genRandomIntArray(6); // genRandomIntArray(6) = {12, 11, 13, 5, 6, 7};
-
-        pl.write("Given Array\n");
-        printArray(arr);
-
-        sw.start();
-        sort(arr, 0, arr.length - 1);
-        sw.stop();
-
-        pl.write("\n\nSorted array\n");
-        printArray(arr);
-        pl.write("\nTotal time: " + sw.getTime() + "ms");
-    }
-
-
-    static int[] genRandomIntArray(int nth) {
-        int[] arr = new int[nth];
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = (int) (Math.random() * 15 + 1);
-        }
-        return arr;
-    }
-
-    /* A utility function to print array of size n */
-    static void printArray(int arr[]) {
-        int n = arr.length;
-        String s = "";
-        for (int i = 0; i < n; ++i)
-            s += arr[i] + " ";
-        pl.write(s);
-    }
 
     /*
      * Desc
@@ -53,6 +14,7 @@ public class QuickSort {
      * Returns 
      *      returns i which is the index of the pivot in its sorted location
      */
+
     public static int partition(int arr[], int low, int high) {
         int pivot_index = high;
         int i = low-1; 
@@ -88,13 +50,6 @@ public class QuickSort {
      *      None
      */
     public static void sort(int arr[], int low, int high) {
-        
-        if (low < 0 || high >= arr.length) {
-            System.out.print("Invalid Parameters");
-            return;
-        }
-        
-
         if (low < high)
         {
             int index = partition(arr, low, high);
