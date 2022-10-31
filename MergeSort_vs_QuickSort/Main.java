@@ -45,18 +45,15 @@ public class Main {
         String s = "";
 
         if(n <= 10) {
-
             for (int i = 0; i < n; ++i)
                 s += arr[i] + " ";
             pl.writeln(s);
         } else {
 
             for (int i = 0; i < 10; ++i) {
-
                 if(i == 9) {
                     s += arr[i] + "..."; 
                 } else {
-
                     s += arr[i] + " ";
                 }
             }
