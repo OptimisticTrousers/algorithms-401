@@ -4,7 +4,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 
 public class PrintLog {
     
@@ -18,7 +17,7 @@ public class PrintLog {
     // If file already exists, clear contents of .txt file
     public void clear() {
         if (f.exists()) { 
-            try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out))) {
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(f, true))) {
             } catch (IOException e) {
                 e.printStackTrace();
             }
