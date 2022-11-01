@@ -17,7 +17,7 @@ public class PrintLog {
     // If file already exists, clear contents of .txt file
     public void clear() {
         if (f.exists()) { 
-            try (BufferedWriter bw = new BufferedWriter(new FileWriter(f, true))) {
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(f, false))) {
             } catch (IOException e) {
                 e.printStackTrace();
             }
